@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactTyped } from 'react-typed';
 
-const Hero = () => {
+const Hero = ({onLoginClick}) => {
     return(
         <div className='text-white'>
             <div className="opacity-50 absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#30cde6_100%)]"></div>
@@ -16,10 +16,10 @@ const Hero = () => {
                         backSpeed={70}
                         loop/> 
                 </div>
-                <li className='relative p-1 mx-auto my-4 w-[225px] h-9 bg-white text-black rounded cursor-pointer whitespace-nowrap group font-bold uppercase'>
-                    <span className='opacity-50 brightness-80 absolute mx-auto w-0 group-hover:w-[225px] transition-all ease-out duration-300 rounded -mt-1 -ml-[1.58rem] h-9 bg-[#00df9a]'></span>
-                    <span className='relative z-10 transition-colors duration-300'>Click Here to Login</span>
-                </li>
+                <button className='relative mx-auto my-4 w-[225px] h-9 bg-white text-black rounded cursor-pointer overflow-hidden group font-bold uppercase flex items-center justify-center' onClick={onLoginClick}>
+                    <span className='absolute inset-0 w-0 group-hover:w-full h-full bg-[#00df9a] opacity-50 transition-all duration-300 ease-out'></span>
+                    <span className='relative z-10'>Click Here to Signup</span>
+                </button>
             </div>
         </div>
     )

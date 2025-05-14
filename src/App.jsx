@@ -1,14 +1,21 @@
-import React from 'react';
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Login from './components/Login'
+import React, { useRef } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Login from './components/Login';
 
 function App() {
+  const loginRef = useRef(null);
+
+  const scrollToLogin = () => {
+    loginRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <div>
-      <Navbar />
-      <Hero />
-      <Login />
+      <Navbar onLoginClick={scrollToLogin}/>
+      <Hero onLoginClick={scrollToLogin}/>
+      <div ref={loginRef}>
+        <Login onLoginClick={scrollToLogin}/>
+      </div>
     </div>
   )
 }
