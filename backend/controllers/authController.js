@@ -4,15 +4,15 @@ import { createUser, findUserByEmail } from '../models/userModel.js';
 
 export const register = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { name, email, password } = req.body;
 
     const existingUser = await findUserByEmail(email);
     if (existingUser) return res.status(400).json({ msg: 'User already exists' });
     //the above func returns error if a suer tries to regisster with email that exists
 
     const hpasswd = await bcrypt.hash(password, 10);
-    const user = await createUser(username, email, hpasswd);
-    res.status(201).json({ msg: 'User registered', user: { id: user.id, username: user.username, email: user.email } });
+    const user = await createUser(name, email, hpasswd);
+    res.status(201).json({ msg: 'User registered', user: { id: user.id, name: user.name, email: user.email } });
   } catch (error) {
     res.status(500).json({ msg: 'Server error', error: error.message }); //this try catch bock is to ensure if internal error is there with status 500
   }
@@ -33,7 +33,7 @@ export const login = async (req, res) => {
     res.json({
       msg: 'Login successful',
       token,
-      user: { id: user.id, username: user.username, email: user.email },
+      user: { id: user.id, name: user.name, email: user.email },
     });
   } catch (error) {
     res.status(500).json({ msg: 'Server error', error: error.message });
