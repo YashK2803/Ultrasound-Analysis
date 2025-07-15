@@ -1,7 +1,6 @@
-```markdown
-# Ultrasound-Analysis
+# 🩻 Ultrasound-Analysis
 
-A full-stack web application for breast ultrasound image analysis using deep learning. This project features a React frontend for intuitive UI and a FastAPI backend for ML-powered image classification and segmentation.
+A full-stack web application for breast ultrasound image analysis using deep learning. This project features a **React frontend** for intuitive UI and a **FastAPI backend** for ML-powered image classification and segmentation.
 
 ---
 
@@ -42,38 +41,47 @@ Ultrasound-Analysis/
 ## 🚀 Quick Start
 
 ### 1. Backend (FastAPI ML Inference)
+
 - Python 3.8+ required.
 - Install dependencies from `backend/ml/requirements.txt` or run:
 
-  ```
+  ```bash
   pip install fastapi uvicorn pillow torch torchvision numpy scikit-learn python-multipart bcrypt psycopg2-binary supabase
   ```
 
 - Place `resnet.pth` and `best_attention_unet_busi.pth` inside `backend/ml/`.
 - Start the backend server:
 
-  ```
+  ```bash
   cd backend/ml
   uvicorn ml_api:app --reload --host 0.0.0.0 --port 8000
   ```
 
+---
+
 ### 2. Backend (Node/Express Auth)
-- In `backend/`:
-  ```
-  npm install
-  node server.js
-  ```
-- Ensure `.env` contains your database credentials.
+
+In `backend/`:
+
+```bash
+npm install
+node server.js
+```
+
+Ensure `.env` contains your database credentials.
+
+---
 
 ### 3. Frontend (React)
-- In the root or frontend directory:
 
-  ```
-  npm install
-  npm run dev
-  ```
+In the root or frontend directory:
 
-- App runs at [http://localhost:5173](http://localhost:5173) (or your configured port).
+```bash
+npm install
+npm run dev
+```
+
+The app runs at: [http://localhost:5173](http://localhost:5173)
 
 ---
 
@@ -89,17 +97,18 @@ Ultrasound-Analysis/
 
 ## 🔌 API Endpoints
 
-| Endpoint               | Method | Description                                |
-|------------------------|--------|--------------------------------------------|
-| `/segment`             | POST   | Accepts ultrasound image, returns prediction and (if applicable) segmentation mask (base64 PNG in JSON). |
-| `/api/auth/signup`     | POST   | Register a new user (Node.js backend)      |
-| `/api/auth/login`      | POST   | Login and receive JWT (Node.js backend)    |
+| Endpoint           | Method | Description                                                                 |
+|--------------------|--------|-----------------------------------------------------------------------------|
+| `/segment`         | POST   | Accepts ultrasound image, returns prediction and segmentation mask (if any) |
+| `/api/auth/signup` | POST   | Register a new user (Node.js backend)                                       |
+| `/api/auth/login`  | POST   | Login and receive JWT (Node.js backend)                                     |
 
 ---
 
 ## ⚙️ Environment Variables
 
 In `backend/.env` (Node.js API):
+
 ```
 PORT=3000
 DB_USER=your_db_user
@@ -109,7 +118,8 @@ DB_PORT=5432
 DB_DATABASE=your_db_name
 JWT_SECRET=your_jwt_secret
 ```
-*Never commit real passwords/secrets to source control.*
+
+> ⚠️ **Never commit real passwords/secrets to source control.**
 
 ---
 
@@ -117,8 +127,8 @@ JWT_SECRET=your_jwt_secret
 
 1. **Upload ultrasound image:** Navigate to Dashboard and select an image.
 2. **Preview:** The image shows up instantly.
-3. **Analyze:** Click Analyze to receive prediction. If abnormal, a mask image is shown.
-4. **Signup/Login:** Use the Auth pages to register and access the dashboard (if enabled).
+3. **Analyze:** Click Analyze to receive prediction. If abnormal, a segmentation mask will be shown.
+4. **Signup/Login:** Use the Auth pages to register and access the dashboard.
 
 ---
 
@@ -127,21 +137,21 @@ JWT_SECRET=your_jwt_secret
 - **Backend not connecting:** Ensure backend servers are running; check `.env` and CORS config.
 - **Port conflicts:** Make sure only one service uses a port at a time (3000/8000/5173, etc.).
 - **Segmentation missing:** Only shown for `benign` or `malignant` predictions. Try with different images.
-- **Database not persistent:** Verify Supabase/Postgres connection info is correct and matches intended environment.
+- **Database not persistent:** Verify Supabase/Postgres connection info is correct and matches the intended environment.
 
 ---
 
 ## 📦 Backend Main Dependencies
 
-- fastapi, uvicorn
-- pillow, torch, torchvision, numpy
-- scikit-learn
-- python-multipart, bcrypt, psycopg2-binary, supabase
+- `fastapi`, `uvicorn`
+- `pillow`, `torch`, `torchvision`, `numpy`
+- `scikit-learn`
+- `python-multipart`, `bcrypt`, `psycopg2-binary`, `supabase`
 
 ## 📦 Frontend Main Dependencies
 
-- react, react-dom, react-router-dom
-- lucide-react, tailwindcss, dotenv, axios, bcryptjs, classnames
+- `react`, `react-dom`, `react-router-dom`
+- `lucide-react`, `tailwindcss`, `dotenv`, `axios`, `bcryptjs`, `classnames`
 
 (Install Node deps with `npm install` and Python deps with `pip install ...` as listed above.)
 
@@ -149,7 +159,7 @@ JWT_SECRET=your_jwt_secret
 
 ## 🤝 Contributing
 
-- Fork the repo, create a branch, commit features/fixes, and open a pull request.
+- Fork the repo, create a branch, commit your features or fixes, and open a pull request.
 - For bugs or questions, please open an issue.
 
 ---
@@ -159,4 +169,3 @@ JWT_SECRET=your_jwt_secret
 For support or feature requests, open an issue or reach out to the maintainer.
 
 ---
-```
